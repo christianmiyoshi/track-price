@@ -1,0 +1,15 @@
+version: '3'
+services:
+  scrapping-python:
+    build: ./scrapping/python
+    container_name: scrapping-python
+    environment:
+      APP_ENV: "development"
+      APP_DEBUG: "True"
+      APP_PORT: 5000
+      KABUM_PRODUCT_URL: "${KABUM_PRODUCT_URL}"
+      USER_AGENT: "$USER_AGENT"
+    ports: 
+        - 5000:5000
+    volumes:
+      - ./scrapping/python:/code
