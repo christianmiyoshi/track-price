@@ -2,7 +2,8 @@
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [clj-http.client :as client]))
 
 (defn about-page
   [request]
@@ -10,9 +11,16 @@
                               (clojure-version)
                               (route/url-for ::about-page))))
 
+;; (defn home-page
+;;   [request]
+;;   (ring-resp/response "Hello World   sdasdas!"))
+
 (defn home-page
   [request]
-  (ring-resp/response "Hello World   sdasdas!"))
+  (let [response (:body (client/get "http://scrapping-python:5000/kabum?id=117768"))]
+    (ring-resp/response response)))
+  
+
 
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}
@@ -22,7 +30,7 @@
 ;; Tabular routes
 (def routes #{["/" :get (conj common-interceptors `home-page)]
               ["/about" :get (conj common-interceptors `about-page)]})
-
+            
 ;; Map-based routes
 ;(def routes `{"/" {:interceptors [(body-params/body-params) http/html-body]
 ;                   :get home-page
@@ -33,7 +41,6 @@
 ;  `[[["/" {:get home-page}
 ;      ^:interceptors [(body-params/body-params) http/html-body]
 ;      ["/about" {:get about-page}]]]])
-
 
 ;; Consumed by projection-clojure.server/create-server
 ;; See http/default-interceptors for additional options you can configure
