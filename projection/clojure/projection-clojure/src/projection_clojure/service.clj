@@ -3,7 +3,12 @@
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
             [ring.util.response :as ring-resp]
-            [clj-http.client :as client]))
+            [clj-http.client :as client]
+            [clojure.java.jdbc :as sql]
+            [clj-time.core :as time]
+            [clj-time.coerce :as timec]))
+
+(def connect-url "postgresql://db-user:db-password@projection-clojure-postgres:5432/track_pricing?currentSchema=projection")
 
 (defn about-page
   [request]
@@ -17,8 +22,16 @@
 
 (defn home-page
   [request]
-  (let [response (:body (client/get "http://scrapping-python:5000/kabum?id=117768"))]
-    (ring-resp/response response)))
+  (let [id (Integer/parseInt (get-in request [:query-params :id]))      
+      products (sql/query connect-url ["select * from products where id = ?" id ])
+      product (first products)
+      response (client/get (str "http://scrapping-python:5000/kabum?id=" (get product :external_id)) {:as :json})
+      body (:body response)
+      price (get body :price)]
+      (sql/insert! connect-url :historical_prices {:product_id id :price (bigdec price) :timestamp (timec/to-timestamp (time/now)) })
+      ;(println response)
+      (ring-resp/response body)))
+  
   
 
 

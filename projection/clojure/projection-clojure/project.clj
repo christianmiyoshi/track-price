@@ -18,9 +18,12 @@
                  [org.slf4j/log4j-over-slf4j "1.7.26"]
 
                  [org.clojure/java.jdbc "0.7.12"]
-                 [org.postgresql/postgresql "9.4-1201-jdbc41"]
+                 [org.postgresql/postgresql "42.3.3"]
                  
-                 [clj-http "3.12.3"]]
+                 [cheshire "5.11.0"]
+                 [clj-http "3.12.3"]                 
+                
+                 [clj-time "0.15.2"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   ;; If you use HTTP/2 or ALPN, use the java-agent to pull in the correct alpn-boot dependency

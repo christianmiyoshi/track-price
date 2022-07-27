@@ -1,6 +1,7 @@
 FROM clojure:lein
 
 EXPOSE 8080
+EXPOSE 5432
 
 WORKDIR /code
 
