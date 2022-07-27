@@ -17,3 +17,4 @@ CMD (echo "(def dev-serv (run-dev))"; cat <&0) | lein repl :start :port 7000 :ho
 
 #CMD lein repl :start :port 7000
 #lein repl :start :port 7000 :host 0.0.0.0
+#lein repl :connect localhost:7000

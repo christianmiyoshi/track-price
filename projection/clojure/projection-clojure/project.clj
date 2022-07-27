@@ -1,5 +1,4 @@
 (defproject projection-clojure "0.0.1-SNAPSHOT"
-  :plugins [[nrepl/drawbridge "0.2.1"]] ;; Leiningen dependency
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
