@@ -24,6 +24,8 @@ services:
       - ./projection/clojure:/code
       #- ~/.m2:/root/.m2
       #- ~/.lein:/root/.lein
+      - ~/.track-price/clojure/.m2:/root/.m2
+      - ~/.track-price/clojure/.lein:/root/.lein
 
   projection-clojure-postgres:
     image: postgres:latest
