@@ -27,7 +27,7 @@
       product (first products)
       response (client/get (str "http://scrapping-python:5000/kabum?id=" (get product :external_id)) {:as :json})
       body (:body response)
-      price (get body :price)]
+      price (:price body)]
       (sql/insert! connect-url :historical_prices {:product_id id :price (bigdec price) :timestamp (timec/to-timestamp (time/now)) })
       ;(println response)
       (ring-resp/response body)))

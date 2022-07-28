@@ -22,8 +22,8 @@ services:
       - "8080:8080"
     volumes:
       - ./projection/clojure:/code
-      - ~/.m2:/root/.m2
-      - ~/.lein:/root/.lein
+      #- ~/.m2:/root/.m2
+      #- ~/.lein:/root/.lein
 
   projection-clojure-postgres:
     image: postgres:latest
@@ -37,3 +37,20 @@ services:
       - "5432"
     volumes:
       - ~/.track-price/postgres/data:/var/lib/postgresql/data
+
+  activemq:
+    image: rmohr/activemq:latest
+    #environment:
+      #- "TZ=Europe/Amsterdam"
+    #volumes:
+      #- "./activemq/activemq.xml:/conf/activemq.xml"
+    ports:
+      - "61616:61616" # broker (admin:adminactivemq)(amq:amq)
+      - "8161:8161"   # web    http://boot2docker:8161/admin (admin:admin)
+
+  camel:
+    build: ./integration/camel
+    #volumes:
+      #- ./integration/camel/target/camel-0.0.1-SNAPSHOT.jar:/code/camel.jar
+    ports:
+      - "8090:8080"

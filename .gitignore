@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/clojure,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=clojure,python
+# Created by https://www.toptal.com/developers/gitignore/api/python,clojure,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,clojure,java
 
 ### Clojure ###
 pom.xml
@@ -16,6 +16,30 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
+
+### Java ###
+# Compiled class file
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -76,7 +100,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -179,4 +202,122 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# End of https://www.toptal.com/developers/gitignore/api/clojure,python
+# End of https://www.toptal.com/developers/gitignore/api/python,clojure,java
+integration/camel/.mvn
+
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@christianmiyoshi 
+christianmiyoshi
+/
+track-price
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+track-price/integration/camel/.gitignore
+@christianmiyoshi
+christianmiyoshi feat: add apache camel and active mq
+Latest commit 1513136 1 minute ago
+ History
+ 1 contributor
+33 lines (29 sloc)  395 Bytes
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+You have no unread notifications
+
+# Project related
+
+# Java related
+pom.xml
+pom.xml.asc
+*jar
+*.class
+
+# Leiningen
+classes/
+lib/
+native/
+checkouts/
+target/
+.lein-*
+repl-port
+.nrepl-port
+.repl
+
+# Temp Files
+*.orig
+*~
+.*.swp
+.*.swo
+*.tmp
+*.bak
+
+# OS X
+.DS_Store
+
+# Logging
+*.log
+/logs/
+
+# Builds
+out/
+build/
+
